@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="detector" pkg="pencil_perception_module" type="detector.py" output="screen"> 
+    <param name="subscribed_topic_name" value="/camera/image_raw"/>
+    <param name="published_topic_name" value="/detection_results"/>
+
+    <param name="model_path" value="please_input_your_path_to_perception_model"/>
+    <!-- Apply pencil filter on the input images -->
+    <param name="apply_pencil_filter" type="bool" value="true"/>
+
+    <param name="epoch" type="int" value="789"/>
+
+    <param name="threshold" type="double" value="0.7"/>
+
+
+  </node>
+  
+
+
+</launch>
