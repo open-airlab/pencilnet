@@ -1,7 +1,7 @@
 # PencilNet
 This repo will host dataset, models, and implementation code of PencilNet.
 
-![](misc/pencil_net.gif)
+![](pencil_net.gif)
 ## Abstract
 
 In autonomous and mobile robotics, one of the main challenges is the robust on-the-fly perception of the environment which is often unknown and dynamic, like in autonomous drone racing. In this work, we propose a novel deep neural network-based perception method for racing gate detection -- PencilNet -- which relies on a lightweight neural network backbone on top of a pencil filter. This approach unifies predictions of the gates' 2D position, distance and orientation in a single pose tuple. We show that our method is effective for zero-shot sim-to-real transfer learning that does not need any real-time training samples. Moreover, compared to state-of-art methods, our framework is extremely robust to illumination changes commonly seen under rapid flight. A thorough set of experiments demonstrates the effectiveness of this approach in multiple challenging scenarios, where the drone completes various tracks under different lighting conditions.
