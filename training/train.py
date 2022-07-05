@@ -32,7 +32,7 @@ config['batch_norm_epsilon'] = 1e-5
 config['optimizer'] = 'adam'
 config['loss'] = 'custom'
 
-config["dataset_folder"] = "/home/huy/dataset_ws/Train_data/pencil_training_images/pencil_recorect_New_Night"
+config["dataset_folder"] = "/home/huy/dataset_ws/Train_data/pencil_sim_training_images"
 
 
 config['train_indices'] = os.path.join(config['dataset_folder'], 'train-indices.npy')

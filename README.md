@@ -115,6 +115,14 @@ Build the package with `catkin build`
 ```
 catkin build pencil_perception_module
 ```
+
+Change the path to the model within `perception.launch`:
+
+```
+ <param name="model_path" value="please_input_your_path_to_perception_model"/>
+
+```
+
 then, to launch the node:
 
 ```
@@ -123,8 +131,13 @@ roslaunch pencil_perception_module perception.launch
 ```
 ## Bag file testing
 
+Download a real-time test bag file here (size: 5 GB):
+[Bagfile N-100](https://drive.google.com/file/d/1lJN7gI5kL0GZbLt0rcXl94jQehMmZ1Qc/view?usp=sharing)
+
 run the bag file with the following options:
 
 ```
 --topics /camera/image_raw /tf /tf_static /ground_truth/gate_pose_array /state_estimator/drone/filtered_odom_on_map /state_estimator/drone/pose_on_map /mavros/local_position/odom /mavros/vision_pose/pose /vicon/gate_1/gate_1 /vicon/gate_2/gate_2 /vicon/gate_3/gate_3 /vicon/gate_4/gate_4 --clock
 ```
+
+Predicted gate center can be visualized using `rqt_image_view` under the topic `/predicted_center_on_image`

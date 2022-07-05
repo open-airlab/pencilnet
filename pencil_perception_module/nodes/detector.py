@@ -10,7 +10,7 @@ from pencil_perception_module.msg import PredictionStamped
 from geometry_msgs.msg import PolygonStamped, Point32, Point
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
-import tensorflow as tf
+
 import numpy as np
 import utils_io
 import time
@@ -18,6 +18,8 @@ import sys
 
 from logger import Logger
 
+import tensorflow.compat.v1 as tf   # for this code to work with tensorflow 1.x
+tf.disable_v2_behavior()
 class Detector:
 
   def __init__(self):
