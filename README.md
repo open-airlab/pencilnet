@@ -55,7 +55,7 @@ The following models are trained solely using the above RGB training dataset.
 - [DroNet - full](https://drive.google.com/file/d/1CvywyYmMYuuwSVDzVpTz-w-QzRuDGwxb/view?usp=sharing)
 - [DroNet - half](https://drive.google.com/file/d/1lGqRA0ZRWHW2_0K61nsRooYmtDD3mKMG/view?usp=sharing)
 - [ADRNet - mod](https://drive.google.com/file/d/1Fv8DJK2yBlk4aAd7BerRlN24Pvj5jnzy/view?usp=sharing)
-## Training and Evaluation
+## Training
 
 For training, inside **train.py**, change the config for the right directory of the dataset folder accordingly:
 
@@ -75,6 +75,39 @@ python train.py
 ```
 
 For other baselines, we will provide the training file and configurations in separate folders in this repo.
+
+
+## Evaluation
+
+There are two different evaluation scripts:
+
+- Mean absolute error (MAE) evaluation (evaluate_mae.py): this will provide model estimated MAE errors along metrics: gate center, distance and orientation of a predicted gate against ground truth for a model
+- False negative percentage (FN) evaluation (evaluate_FP.py): provide the percentage of false negative errors of a model
+
+To use these scripts, please simply modify the path of the respective models (downloaded links provided above), the result folder (where to store the results), test datasets, and the name of the models in the **'__main__'** at the end of each file. For example:
+
+```
+result_folder_path = "./evaluation_results"
+
+pencil_model_path = "../filter_models/2022-01-22-13-45-pretrain-single-gate-corrected"
+sobel_model_path = "../filter_models/sobel-2022-06-06-17-30"
+canny_model_path = "../filter_models/canny-2022-06-07-17-35"
+GateNet_model_path = "../models/Baselines/GateNet/test_folder/2022-01-24-01-06-rgb-on-sim"
+Adr_model_path = "../models/Baselines/ADRNet/test_folder/ADR-mod-2022-02-16-16-03_adr_mod"
+DroNet_half_model_path = "../models/Baselines/Dronet/test_folder/2022-02-15-01-12-dronet-half"
+DroNet_full_model_path = "../models/Baselines/Dronet/test_folder/2022-02-15-13-29-dronet-full"
+
+base_test_data_folder_path = '/home/huy/dataset_ws/Test_data/RAL2022/rgb'
+test_data = ["sim_outdoor_combined", "rgb_real_N_100_from_New_Night", "rgb_real_N_40", "rgb_real_N_20", "rgb_real_N_10"]
+
+models = "GateNet sobel canny pencil".split()
+```
+Note that due to compatibility error, baseline models like ADR, DroNet full, and DroNet half must be evaluated together with filter models. E.g.:
+
+```
+models = "ADR".split()
+```
+
 ## ROS detection node
 
 Build the package with `catkin build`
